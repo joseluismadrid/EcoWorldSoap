@@ -1,0 +1,231 @@
+/* ======== Paleta Natural ======== */
+:root {
+    --verde-salvia: #A3B18A;
+    --verde-oliva: #588157;
+    --beige-arena: #DAD7CD;
+    --marron-tierra: #3A5A40;
+    --blanco: #FFFFFF;
+}
+
+/* ======== Estilos Generales ======== */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--beige-arena);
+    color: var(--marron-tierra);
+}
+
+/* ======== Encabezado ======== */
+header {
+    text-align: center;
+    background-color: var(--verde-oliva);
+    color: var(--blanco);
+    padding: 30px 10px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+/* ======== Navegación ======== */
+nav {
+    background-color: var(--verde-salvia);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--marron-tierra);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ======== Secciones ======== */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.card {
+    background-color: var(--blanco);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== Imágenes ======== */
+.imagenes-producto {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imagenes-producto img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+.imagenes-economia {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imagenes-economia img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+/* ======== Colores ======== */
+.colores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.color {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+    color: var(--blanco);
+    font-weight: bold;
+}
+
+/* ======== Pie de página ======== */
+footer {
+    text-align: center;
+    background-color: var(--marron-tierra);
+    color: var(--blanco);
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* ======== Blog Layout ======== */
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-card {
+    display: flex;
+    gap: 15px;
+    background-color: var(--blanco);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-card img {
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 15px;
+    color: var(--marron-tierra);
+}
+
+.post-content h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    color: rgba(58, 90, 64, 0.8);
+    margin-bottom: 8px;
+}
+
+.post-excerpt {
+    margin: 0 0 10px 0;
+}
+
+.leer-mas {
+    color: var(--verde-oliva);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sidebar .card {
+    padding: 15px;
+}
+
+.sidebar input[type="search"] {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 8px;
+}
+
+.no-image .post-content {
+    padding: 20px;
+}
+
+.oranigrama-img {
+    max-width: max-content;
+    width: 100%;
+    object-fit: contain;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 0 12px;
+    }
+
+    .post-card {
+        flex-direction: column;
+    }
+
+    .post-card img {
+        width: 100%;
+        height: 200px;
+    }
+}
