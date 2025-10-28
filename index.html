@@ -15,9 +15,11 @@
     <img src="img/Logo.png" alt="Logo de la empresa" class="logo">
     <h1>EcoWord Soap</h1>
     <p>Productora y distribuidora de jabones</p>
+    <!-- Botón hamburguesa (se muestra en pantallas pequeñas) -->
+    <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú">☰</button>
   </header>
 
-  <nav>
+  <nav id="site-nav">
     <ul>
       <li><a href="#mision">Misión</a></li>
       <li><a href="#vision">Visión</a></li>
@@ -89,6 +91,32 @@
   <footer>
     <p>© 2025 Nombre de la Empresa | Jabones Naturales | Todos los derechos reservados</p>
   </footer>
+
+  <script>
+    // Toggle menú hamburguesa: mantener pequeño y accesible
+    (function() {
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+
+      if (!btn || !nav) return;
+
+      btn.addEventListener('click', function() {
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        // Cambiar label para lectores de pantalla
+        btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      // Cerrar nav si se cambia el tamaño a mayor a 800px
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 800 && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Abrir menú');
+        }
+      });
+    })();
+  </script>
 </body>
 
 
