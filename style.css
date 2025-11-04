@@ -1,355 +1,305 @@
-/* ======== Paleta Natural ======== */
+/* ==================================================
+   ECO WORLD SOAP — CSS refactor
+   Organización: variables → reset → base → layout → componentes → utilities → responsive
+   Objetivo: mantener compatibilidad con HTML existente y mejorar mantenibilidad.
+================================================== */
+
+/* ----------------------
+   Variables y paleta
+   ---------------------- */
 :root {
-    --verde-salvia: #A3B18A;
-    --verde-oliva: #588157;
-    --beige-arena: #DAD7CD;
-    --marron-tierra: #3A5A40;
-    --blanco: #FFFFFF;
+    --verde-oliva: #6b8e23;
+    --verde-salvia: #a3b18a;
+    --beige-arena: #f5f5f5;
+    --gris-texto: #333333;
+    --blanco: #ffffff;
+
+    /* Espaciado y tamaños reutilizables */
+    --container-max: 1200px;
+    --radius-lg: 16px;
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* ======== Estilos Generales ======== */
-body {
-    font-family: "Poppins", sans-serif;
+/* ----------------------
+   Reset / base
+   ---------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", "Lato", sans-serif;
     background-color: var(--beige-arena);
-    color: var(--marron-tierra);
+    color: var(--gris-texto);
+    line-height: 1.6;
+    -webkit-font-smoothing:antialiased;
 }
 
-/* ======== Encabezado ======== */
+/* Contenedor reutilizable que centra el contenido */
+.container {
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* ----------------------
+   Header
+   ---------------------- */
 header {
+    /* gradiente ligero para cabecera */
+    background: linear-gradient(90deg, var(--verde-salvia), var(--verde-oliva));
+    padding: 2rem 0;
     text-align: center;
-    background-color: var(--verde-oliva);
     color: var(--blanco);
-    padding: 30px 10px;
+    position: relative; /* necesario para posicionar botón menú en móvil */
 }
 
-.logo {
+header .logo {
     width: 100px;
     height: auto;
-}
-
-/* ======== Navegación ======== */
-nav {
-    background-color: var(--verde-salvia);
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
     display: inline-block;
-    margin: 0 15px;
+    margin-bottom: 1rem;
 }
 
-nav ul li a {
-    color: var(--marron-tierra);
-    text-decoration: none;
-    font-weight: bold;
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* ======== Secciones ======== */
-main {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 10px;
-}
-
-.card {
+/* ----------------------
+   Navegación
+   ---------------------- */
+nav {
     background-color: var(--blanco);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* ======== Imágenes ======== */
-.imagenes-producto {
+nav .container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.imagenes-producto img {
-    width: 45%;
-    border-radius: 10px;
-}
-
-.imagenes-economia {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.imagenes-economia img {
-    width: 45%;
-    border-radius: 10px;
-}
-
-/* ======== Colores ======== */
-.colores {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.color {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    text-align: center;
-    line-height: 100px;
-    color: var(--blanco);
-    font-weight: bold;
-}
-
-/* ======== Pie de página ======== */
-footer {
-    text-align: center;
-    background-color: var(--marron-tierra);
-    color: var(--blanco);
-    padding: 15px;
-    margin-top: 20px;
-}
-
-/* ======== Botón hamburguesa ======== */
-.menu-toggle {
-    display: none; /* visible sólo en pantallas pequeñas */
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: var(--blanco);
-    font-size: 1.4rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    position: absolute;
-    right: 16px;
-    top: 18px;
-}
-
-/* Estado visible del nav en pantallas pequeñas */
-nav.open {
-    display: block;
-}
-
-/* ======== Blog Layout ======== */
-.container {
-    max-width: 1100px;
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    padding: 0 10px;
-}
-
-.posts {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.post-card {
-    display: flex;
-    gap: 15px;
-    background-color: var(--blanco);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.post-card img {
-    width: 200px;
-    height: 140px;
-    object-fit: cover;
-}
-
-.post-content {
-    padding: 15px;
-    color: var(--marron-tierra);
-}
-
-.post-content h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-}
-
-.post-meta {
-    font-size: 0.85rem;
-    color: rgba(58, 90, 64, 0.8);
-    margin-bottom: 8px;
-}
-
-.post-excerpt {
-    margin: 0 0 10px 0;
-}
-
-.leer-mas {
-    color: var(--verde-oliva);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.sidebar .card {
-    padding: 15px;
-}
-
-.sidebar input[type="search"] {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 8px;
-}
-
-.no-image .post-content {
-    padding: 20px;
-}
-
-.oranigrama-img {
-    max-width: max-content;
-    width: 100%;
-    object-fit: contain;
     justify-content: center;
     align-items: center;
 }
 
-@media (max-width: 800px) {
-    /* Layout: single column for small screens */
-    .container {
-        grid-template-columns: 1fr;
-        padding: 0 12px;
-    }
-
-    main {
-        margin: 10px 12px;
-        padding: 8px;
-    }
-
-    /* Header & logo adjustments */
-    header {
-        padding: 18px 10px;
-    }
-
-    .logo {
-        width: 70px;
-        display: inline-block;
-        margin-bottom: 8px;
-    }
-
-    header h1 {
-        font-size: 1.25rem;
-        margin: 6px 0 2px;
-    }
-
-    header p {
-        margin: 0;
-        font-size: 0.95rem;
-    }
-
-    /* Navigation: stacked, touch-friendly */
-    /* hide nav by default on small screens; use .open to show */
-    .menu-toggle {
-        display: inline-block;
-    }
-
-    nav {
-        display: none;
-    }
-
-    nav.open {
-        display: block;
-        background-color: var(--verde-salvia);
-        margin: 8px 12px;
-        border-radius: 8px;
-        padding: 8px 0;
-    }
-
-    nav ul {
-        display: block;
-        text-align: left;
-        padding: 8px 12px;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 8px 0;
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 8px 12px;
-        border-radius: 6px;
-    }
-
-    /* Cards full width */
-    .card {
-        padding: 16px;
-    }
-
-    /* Product and economia images stack vertically */
-    .imagenes-producto,
-    .imagenes-economia {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .imagenes-producto img,
-    .imagenes-economia img {
-        width: 100%;
-        max-width: 480px;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    /* Post cards become vertical */
-    .post-card {
-        flex-direction: column;
-    }
-
-    .post-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-
-    /* Color swatches shrink */
-    .colores {
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-    }
-
-    .color {
-        width: 80px;
-        height: 80px;
-        line-height: 80px;
-        font-size: 0.9rem;
-    }
-
-    /* Footer spacing */
-    footer {
-        padding: 12px;
-        font-size: 0.95rem;
-    }
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
 }
+
+nav a {
+    text-decoration: none;
+    color: var(--verde-oliva);
+    font-weight: 500;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--gris-texto);
+}
+
+/* ----------------------
+   Secciones / tarjetas
+   ---------------------- */
+section {
+    max-width: var(--container-max);
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+section h2 {
+    color: var(--verde-oliva);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+section p {
+    text-align: justify;
+}
+
+/* Clase de tarjeta reutilizable por si se necesita en HTML */
+.card {
+    background: var(--blanco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.25rem;
+}
+
+/* ----------------------
+   Footer
+   ---------------------- */
+footer {
+    background-color: var(--verde-oliva);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--beige-arena);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover,
+footer a:focus {
+    opacity: 0.85;
+}
+
+/* ----------------------
+   Utilities (pequeñas ayudas)
+   ---------------------- */
+
+
+
+
+/* ----------------------
+   Interactividad y componentes adicionales
+   ---------------------- */
+/* Botón hamburguesa (se muestra en pantallas pequeñas) */
+.menu-toggle {
+    display: none; /* se muestra solo en móviles vía media query */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+/* Botones reutilizables */
+
+
+.btn:hover,
+.btn:focus { opacity: 0.95; }
+
+/* Galerías e imágenes */
+.imagenes-producto,
+.imagenes-economia {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.imagenes-producto img,
+.imagenes-economia img {
+    max-width: 160px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.oranigrama-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.5rem auto 0;
+}
+
+.colores { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.75rem; }
+.colores .color { width:80px; height:40px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:0.9rem; }
+
+/* ----------------------
+   Mobile menu behavior
+   ---------------------- */
+@media (max-width: 768px) {
+    /* mostrar botón y ocultar nav por defecto */
+    .menu-toggle { display: inline-block; }
+    /* ocultamos el nav hasta que tenga la clase .open (JS controla) */
+    nav { display: none; }
+    nav.open { display: block; }
+    nav.open .main-menu { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; }
+    nav.open .main-menu li { margin: 0; }
+}
+
+/* ----------------------
+   Responsive
+   ---------------------- */
+@media (max-width: 768px) {
+    nav .container { padding: 0.5rem 1rem; }
+    nav ul { flex-direction: column; gap: 0.5rem; }
+    nav ul li { text-align: center; }
+
+    header h1 { font-size: 1.6rem; }
+
+    section { margin: 2rem 1rem; padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    header .logo { width: 84px; }
+    section { padding: 1rem; }
+}
+.nav-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main-menu {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.has-submenu {
+    position: relative;
+}
+
+.submenu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--verde-oliva);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--blanco);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0.25rem 0;
+    min-width: 200px;
+    z-index: 40;
+}
+
+#site-nav {
+    width: 100%;
+}
+
+/* End of file */
