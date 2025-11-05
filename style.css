@@ -1,35 +1,4 @@
 /* ===================================================================
-   ECO WORLD SOAP — CSS Stylesheet
-   ===================================================================
-   
-   AUTHOR: Gemini AI
-   DESCRIPTION: Main stylesheet for Eco World Soap, a responsive and well-organized CSS.
-   VERSION: 1.0
-
-   ===================================================================
-   
-   TABLE OF CONTENTS
-   -------------------------------------------------------------------
-   1.  VARIABLES
-   2.  BASE & RESET
-   3.  TYPOGRAPHY
-   4.  LAYOUT & STRUCTURE
-       - Header
-       - Navigation
-       - Sections
-       - Footer
-   5.  COMPONENTS
-       - Cards
-       - Submenus
-   6.  IMAGES & MEDIA
-   7.  MEDIA QUERIES (Responsive Design)
-       - Mobile (<= 768px)
-       - Tablet (769px - 1024px)
-       - Desktop (>= 1025px)
-   
-   =================================================================== */
-
-/* ===================================================================
    1. VARIABLES
    =================================================================== */
 :root {
@@ -69,7 +38,12 @@ body {
 /* ===================================================================
    3. TYPOGRAPHY
    =================================================================== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
 }
 
@@ -99,16 +73,23 @@ p {
 header {
     background: linear-gradient(90deg, var(--verde-salvia), var(--verde-oliva));
     color: var(--blanco);
-    padding: 1.5rem 1rem; /* Adjusted padding for better spacing */
+    padding: 1.5rem 1rem;
+    /* Adjusted padding for better spacing */
     position: relative;
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    text-align: center; /* Ensure text remains centered */
+    display: flex;
+    /* Use flexbox for alignment */
+    flex-direction: column;
+    /* Stack items vertically */
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+    text-align: center;
+    /* Ensure text remains centered */
 }
 
-header .header-content { /* Add a wrapper for h1 and p to control their width */
+header .header-content {
+    /* Add a wrapper for h1 and p to control their width */
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 1rem;
@@ -127,7 +108,8 @@ header p {
    Navigation
 ---------------------- */
 .menu-toggle {
-    display: none; /* Hidden by default, shown only on mobile/tablet */
+    display: none;
+    /* Hidden by default, shown only on mobile/tablet */
     background: var(--verde-oliva);
     color: var(--blanco);
     border: none;
@@ -156,16 +138,19 @@ nav#site-nav {
 }
 
 nav#site-nav.open {
-    display: block; /* Shown when menu is open */
+    display: block;
+    /* Shown when menu is open */
 }
 
 .nav-inner {
     max-width: var(--container-max);
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Distribute space between left and right menus */
+    justify-content: space-between;
+    /* Distribute space between left and right menus */
     align-items: center;
-    padding: 0 1rem; /* Add padding to the sides */
+    padding: 0 1rem;
+    /* Add padding to the sides */
 }
 
 ul {
@@ -343,9 +328,9 @@ img:hover {
    =================================================================== */
 
 /* ----------------------
-   Móviles (hasta 768px)
+   Móviles (hasta 480)
    ---------------------- */
-@media (max-width: 768px) {
+@media (max-width: 320px) and (max-width: 480px) {
     .menu-toggle {
         display: inline-block;
     }
@@ -355,7 +340,8 @@ img:hover {
         position: absolute;
         top: 0;
         left: 0;
-        padding-top: 6rem; /* To account for the menu-toggle button */
+        padding-top: 6rem;
+        /* To account for the menu-toggle button */
         background: var(--blanco);
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
     }
@@ -401,6 +387,7 @@ img:hover {
 
     header .header-content {
         padding: 0 0.5rem;
+
     }
 
     .imagenes-economia,
@@ -414,9 +401,9 @@ img:hover {
     .imagenes-economia img,
     .imagenes-producto img,
     .imagenes-factor img,
-    .organigrama-img { 
-        flex-basis: 100%; 
-        margin: 0 auto; 
+    .organigrama-img {
+        flex-basis: 100%;
+        margin: 0 auto;
     }
 
     section {
@@ -432,7 +419,7 @@ img:hover {
 /* ----------------------
    Tablets (769px a 1024px)
    ---------------------- */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .menu-toggle {
         display: inline-block;
     }
@@ -442,7 +429,8 @@ img:hover {
         position: absolute;
         top: 0;
         left: 0;
-        padding-top: 6rem; /* To account for the menu-toggle button */
+        padding-top: 6rem;
+        /* To account for the menu-toggle button */
         background: var(--blanco);
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
     }
@@ -452,13 +440,15 @@ img:hover {
     }
 
     .nav-inner {
-        flex-direction: column; /* Stack items vertically on tablet */
+        flex-direction: column;
+        /* Stack items vertically on tablet */
         gap: 1rem;
         padding: 0;
     }
 
     ul {
-        flex-direction: column; /* Stack menu items vertically on tablet */
+        flex-direction: column;
+        /* Stack menu items vertically on tablet */
         align-items: center;
         gap: 0.8rem;
     }
@@ -475,14 +465,16 @@ img:hover {
     .imagenes-producto,
     .imagenes-factor,
     .organigrams {
-        width: 100%; /* Adjusted to 100% to rely on parent section's max-width and padding */
+        width: 100%;
+        /* Adjusted to 100% to rely on parent section's max-width and padding */
         gap: 10px;
     }
 
     .imagenes-economia img,
     .imagenes-producto img,
     .imagenes-factor img,
-    .organigrama-img { /* Corrected typo from oranigrama-img */
+    .organigrama-img {
+        /* Corrected typo from oranigrama-img */
         flex-basis: 45%;
     }
 
@@ -495,26 +487,34 @@ img:hover {
 /* ----------------------
    Desktop (>1024px)
    ---------------------- */
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (max-width: 1280px) {
     .menu-toggle {
-        display: none; /* Hide menu toggle on desktop */
+        display: none;
+        /* Hide menu toggle on desktop */
     }
 
     nav#site-nav {
-        display: block; /* Always show navigation on desktop */
-        position: static; /* Remove absolute positioning */
-        padding-top: 0; /* Remove padding-top */
-        box-shadow: none; /* Remove box shadow */
-        background: none; /* Remove background */
+        display: block;
+        /* Always show navigation on desktop */
+        position: static;
+        /* Remove absolute positioning */
+        padding-top: 0;
+        /* Remove padding-top */
+        box-shadow: none;
+        /* Remove box shadow */
+        background: none;
+        /* Remove background */
     }
 
     .nav-inner {
-        flex-direction: row; /* Arrange items horizontally */
+        flex-direction: row;
+        /* Arrange items horizontally */
         gap: 3rem;
     }
 
     ul {
-        flex-direction: row; /* Arrange menu items horizontally */
+        flex-direction: row;
+        /* Arrange menu items horizontally */
         gap: 1.5rem;
     }
 
@@ -530,14 +530,78 @@ img:hover {
     .imagenes-producto,
     .imagenes-factor,
     .organigrams {
-        width: 100%; /* Adjusted to 100% to rely on parent section's max-width and padding */
+        width: 100%;
+        /* Adjusted to 100% to rely on parent section's max-width and padding */
         gap: 10px;
     }
 
     .imagenes-economia img,
     .imagenes-producto img,
     .imagenes-factor img,
-    .organigrama-img { /* Corrected typo from oranigrama-img */
+    .organigrama-img {
+        /* Corrected typo from oranigrama-img */
+        flex-basis: 200px;
+    }
+
+    section {
+        margin: 3rem auto;
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 1281px) {
+    .menu-toggle {
+        display: none;
+        /* Hide menu toggle on desktop */
+    }
+
+    nav#site-nav {
+        display: block;
+        /* Always show navigation on desktop */
+        position: static;
+        /* Remove absolute positioning */
+        padding-top: 0;
+        /* Remove padding-top */
+        box-shadow: none;
+        /* Remove box shadow */
+        background: none;
+        /* Remove background */
+    }
+
+    .nav-inner {
+        flex-direction: row;
+        /* Arrange items horizontally */
+        gap: 3rem;
+    }
+
+    ul {
+        flex-direction: row;
+        /* Arrange menu items horizontally */
+        gap: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+
+    .imagenes-economia,
+    .imagenes-producto,
+    .imagenes-factor,
+    .organigrams {
+        width: 100%;
+        /* Adjusted to 100% to rely on parent section's max-width and padding */
+        gap: 10px;
+    }
+
+    .imagenes-economia img,
+    .imagenes-producto img,
+    .imagenes-factor img,
+    .organigrama-img {
+        /* Corrected typo from oranigrama-img */
         flex-basis: 200px;
     }
 
