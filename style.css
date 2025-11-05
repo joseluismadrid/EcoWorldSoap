@@ -1,28 +1,52 @@
-/* ==================================================
-   ECO WORLD SOAP — CSS refactor
-   Organización: variables → reset → base → layout → componentes → utilities → responsive
-   Objetivo: mantener compatibilidad con HTML existente y mejorar mantenibilidad.
-================================================== */
+/* ===================================================================
+   ECO WORLD SOAP — CSS Stylesheet
+   ===================================================================
+   
+   AUTHOR: Gemini AI
+   DESCRIPTION: Main stylesheet for Eco World Soap, a responsive and well-organized CSS.
+   VERSION: 1.0
 
-/* ----------------------
-   Variables y paleta
-   ---------------------- */
+   ===================================================================
+   
+   TABLE OF CONTENTS
+   -------------------------------------------------------------------
+   1.  VARIABLES
+   2.  BASE & RESET
+   3.  TYPOGRAPHY
+   4.  LAYOUT & STRUCTURE
+       - Header
+       - Navigation
+       - Sections
+       - Footer
+   5.  COMPONENTS
+       - Cards
+       - Submenus
+   6.  IMAGES & MEDIA
+   7.  MEDIA QUERIES (Responsive Design)
+       - Mobile (<= 768px)
+       - Tablet (769px - 1024px)
+       - Desktop (>= 1025px)
+   
+   =================================================================== */
+
+/* ===================================================================
+   1. VARIABLES
+   =================================================================== */
 :root {
     --verde-oliva: #6b8e23;
     --verde-salvia: #a3b18a;
     --beige-arena: #f5f5f5;
     --gris-texto: #333333;
     --blanco: #ffffff;
-
-    /* Espaciado y tamaños reutilizables */
-    --container-max: 1200px;
+    --amarillo-acento: #ffd369;
     --radius-lg: 16px;
-    --shadow-soft: 0 4px 10px rgba(0,0,0,0.05);
+    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --container-max: 1100px;
 }
 
-/* ----------------------
-   Reset / base
-   ---------------------- */
+/* ===================================================================
+   2. BASE & RESET
+   =================================================================== */
 *,
 *::before,
 *::after {
@@ -40,78 +64,119 @@ body {
     background-color: var(--beige-arena);
     color: var(--gris-texto);
     line-height: 1.6;
-    -webkit-font-smoothing:antialiased;
 }
 
-/* Contenedor reutilizable que centra el contenido */
-.container {
-    max-width: var(--container-max);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* ===================================================================
+   3. TYPOGRAPHY
+   =================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
 }
+
+a {
+    text-decoration: none;
+    color: var(--gris-texto);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    cursor: pointer;
+    color: var(--verde-oliva);
+}
+
+p {
+    text-align: justify;
+}
+
+/* ===================================================================
+   4. LAYOUT & STRUCTURE
+   =================================================================== */
 
 /* ----------------------
    Header
-   ---------------------- */
+---------------------- */
 header {
-    /* gradiente ligero para cabecera */
     background: linear-gradient(90deg, var(--verde-salvia), var(--verde-oliva));
-    padding: 2rem 0;
-    text-align: center;
     color: var(--blanco);
-    position: relative; /* necesario para posicionar botón menú en móvil */
+    padding: 1.5rem 1rem; /* Adjusted padding for better spacing */
+    position: relative;
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Ensure text remains centered */
 }
 
-header .logo {
-    width: 100px;
-    height: auto;
-    display: inline-block;
-    margin-bottom: 1rem;
+header .header-content { /* Add a wrapper for h1 and p to control their width */
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 header h1 {
     font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.1;
+}
+
+header p {
+    font-size: 1rem;
+    text-align: center;
 }
 
 /* ----------------------
-   Navegación
-   ---------------------- */
-nav {
-    background-color: var(--blanco);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+   Navigation
+---------------------- */
+.menu-toggle {
+    display: none; /* Hidden by default, shown only on mobile/tablet */
+    background: var(--verde-oliva);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    box-shadow: var(--shadow-soft);
+    transition: background 0.3s ease;
 }
 
-nav .container {
+.menu-toggle:hover {
+    background: var(--verde-salvia);
+}
+
+nav#site-nav {
+    background: var(--blanco);
+    padding: 0.8rem 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    z-index: 90;
+}
+
+nav#site-nav.open {
+    display: block; /* Shown when menu is open */
+}
+
+.nav-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Distribute space between left and right menus */
     align-items: center;
+    padding: 0 1rem; /* Add padding to the sides */
 }
 
-nav ul {
+ul {
+    list-style: none;
     display: flex;
     gap: 1.5rem;
-    list-style: none;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--verde-oliva);
-    font-weight: 500;
-    transition: color 0.25s ease, opacity 0.25s ease;
-}
-
-nav a:hover,
-nav a:focus {
-    color: var(--gris-texto);
 }
 
 /* ----------------------
-   Secciones / tarjetas
-   ---------------------- */
+   Sections
+---------------------- */
 section {
     max-width: var(--container-max);
     margin: 3rem auto;
@@ -128,21 +193,9 @@ section h2 {
     text-align: center;
 }
 
-section p {
-    text-align: justify;
-}
-
-/* Clase de tarjeta reutilizable por si se necesita en HTML */
-.card {
-    background: var(--blanco);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    padding: 1.25rem;
-}
-
 /* ----------------------
    Footer
-   ---------------------- */
+---------------------- */
 footer {
     background-color: var(--verde-oliva);
     color: var(--blanco);
@@ -151,155 +204,345 @@ footer {
     font-size: 0.9rem;
 }
 
-footer a {
-    color: var(--beige-arena);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-}
+/* ===================================================================
+   5. COMPONENTS
+   =================================================================== */
 
-footer a:hover,
-footer a:focus {
-    opacity: 0.85;
+/* ----------------------
+   Cards
+---------------------- */
+.card {
+    background: var(--blanco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.25rem;
 }
 
 /* ----------------------
-   Utilities (pequeñas ayudas)
-   ---------------------- */
-
-
-
-
-/* ----------------------
-   Interactividad y componentes adicionales
-   ---------------------- */
-/* Botón hamburguesa (se muestra en pantallas pequeñas) */
-.menu-toggle {
-    display: none; /* se muestra solo en móviles vía media query */
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 1.25rem;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-
-/* Botones reutilizables */
-
-
-.btn:hover,
-.btn:focus { opacity: 0.95; }
-
-/* Galerías e imágenes */
-.imagenes-producto,
-.imagenes-economia {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 0.75rem;
-}
-
-.imagenes-producto img,
-.imagenes-economia img {
-    max-width: 160px;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-
-.oranigrama-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0.5rem auto 0;
-}
-
-.colores { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.75rem; }
-.colores .color { width:80px; height:40px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:0.9rem; }
-
-/* ----------------------
-   Mobile menu behavior
-   ---------------------- */
-@media (max-width: 768px) {
-    /* mostrar botón y ocultar nav por defecto */
-    .menu-toggle { display: inline-block; }
-    /* ocultamos el nav hasta que tenga la clase .open (JS controla) */
-    nav { display: none; }
-    nav.open { display: block; }
-    nav.open .main-menu { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; }
-    nav.open .main-menu li { margin: 0; }
-}
-
-/* ----------------------
-   Responsive
-   ---------------------- */
-@media (max-width: 768px) {
-    nav .container { padding: 0.5rem 1rem; }
-    nav ul { flex-direction: column; gap: 0.5rem; }
-    nav ul li { text-align: center; }
-
-    header h1 { font-size: 1.6rem; }
-
-    section { margin: 2rem 1rem; padding: 1.5rem; }
-}
-
-@media (max-width: 480px) {
-    header .logo { width: 84px; }
-    section { padding: 1rem; }
-}
-.nav-inner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.main-menu {
-    display: flex;
-    gap: 1.25rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
+   Submenús
+---------------------- */
 .has-submenu {
     position: relative;
 }
 
-.submenu-toggle {
-    background: transparent;
-    border: none;
-    color: var(--verde-oliva);
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    display: inline-flex;
-    align-items: center;
+.has-submenu>a::after {
+    content: " ▾";
+    font-size: 0.8rem;
 }
 
 .submenu {
-    display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 110%;
     left: 0;
-    background: var(--blanco);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    border-radius: 8px;
+    background: linear-gradient(180deg, var(--blanco), var(--beige-arena));
+    display: none;
+    flex-direction: column;
+    min-width: 220px;
+    padding: 0.5rem 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.25s ease;
+}
+
+.submenu li {
     list-style: none;
-    padding: 0.25rem 0;
-    min-width: 200px;
-    z-index: 40;
 }
 
-#site-nav {
-    width: 100%;
+.submenu li a {
+    padding: 0.8rem 1.2rem;
+    color: var(--gris-texto);
+    display: block;
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease, padding-left 0.2s;
+    border-radius: 4px;
 }
 
-/* End of file */
+.submenu li a:hover {
+    background: var(--verde-oliva);
+    color: var(--blanco);
+    cursor: pointer;
+    padding-left: 1.6rem;
+    font-weight: bold;
+}
+
+.has-submenu:hover>.submenu {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================================================
+   6. IMAGES & MEDIA
+   =================================================================== */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    background: var(--blanco);
+    border: 2px solid var(--verde-salvia);
+}
+
+.imagenes-producto,
+.imagenes-economia,
+.imagenes-factor,
+.organigrams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.imagenes-producto img,
+.imagenes-economia img,
+.imagenes-factor img,
+.organigrama-img {
+    flex: 1 1 300px;
+    max-width: 450px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 0.75rem;
+    background: var(--blanco);
+    border: 2px solid var(--verde-salvia);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagenes-producto img:hover,
+.imagenes-economia img:hover,
+.imagenes-factor img:hover,
+.organigrama-img:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================================================
+   7. MEDIA QUERIES (Responsive Design)
+   =================================================================== */
+
+/* ----------------------
+   Móviles (hasta 768px)
+   ---------------------- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    #site-nav {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-top: 6rem; /* To account for the menu-toggle button */
+        background: var(--blanco);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    #site-nav.open {
+        display: block;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    /* Submenu behavior on mobile: relies on hover, which is not ideal for touch devices.
+       Consider adding JavaScript to toggle a class for better touch interaction. */
+    .submenu {
+        position: static;
+        display: none;
+        opacity: 1;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .has-submenu:hover>.submenu {
+        display: block;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    header .header-content {
+        padding: 0 0.5rem;
+    }
+
+    .imagenes-economia,
+    .imagenes-producto,
+    .imagenes-factor,
+    .organigrams {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .imagenes-economia img,
+    .imagenes-producto img,
+    .imagenes-factor img,
+    .organigrama-img { 
+        flex-basis: 100%; 
+        margin: 0 auto; 
+    }
+
+    section {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* ----------------------
+   Tablets (769px a 1024px)
+   ---------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    #site-nav {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-top: 6rem; /* To account for the menu-toggle button */
+        background: var(--blanco);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    #site-nav.open {
+        display: block;
+    }
+
+    .nav-inner {
+        flex-direction: column; /* Stack items vertically on tablet */
+        gap: 1rem;
+        padding: 0;
+    }
+
+    ul {
+        flex-direction: column; /* Stack menu items vertically on tablet */
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1.1rem;
+    }
+
+    .imagenes-economia,
+    .imagenes-producto,
+    .imagenes-factor,
+    .organigrams {
+        width: 100%; /* Adjusted to 100% to rely on parent section's max-width and padding */
+        gap: 10px;
+    }
+
+    .imagenes-economia img,
+    .imagenes-producto img,
+    .imagenes-factor img,
+    .organigrama-img { /* Corrected typo from oranigrama-img */
+        flex-basis: 45%;
+    }
+
+    section {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/* ----------------------
+   Desktop (>1024px)
+   ---------------------- */
+@media (min-width: 1025px) {
+    .menu-toggle {
+        display: none; /* Hide menu toggle on desktop */
+    }
+
+    nav#site-nav {
+        display: block; /* Always show navigation on desktop */
+        position: static; /* Remove absolute positioning */
+        padding-top: 0; /* Remove padding-top */
+        box-shadow: none; /* Remove box shadow */
+        background: none; /* Remove background */
+    }
+
+    .nav-inner {
+        flex-direction: row; /* Arrange items horizontally */
+        gap: 3rem;
+    }
+
+    ul {
+        flex-direction: row; /* Arrange menu items horizontally */
+        gap: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+
+    .imagenes-economia,
+    .imagenes-producto,
+    .imagenes-factor,
+    .organigrams {
+        width: 100%; /* Adjusted to 100% to rely on parent section's max-width and padding */
+        gap: 10px;
+    }
+
+    .imagenes-economia img,
+    .imagenes-producto img,
+    .imagenes-factor img,
+    .organigrama-img { /* Corrected typo from oranigrama-img */
+        flex-basis: 200px;
+    }
+
+    section {
+        margin: 3rem auto;
+        padding: 2rem;
+    }
+}

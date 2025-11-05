@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" href="img/favicon.ico" type="image/ico+xml">
   <title>EcoWord Soap</title>
+  <link rel="icon" href="img/favicon.ico" type="image/ico+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
     <img src="img/Logo.png" alt="Logo de la empresa" class="logo">
-    <h1>EcoWord Soap</h1>
-    <p>Productora y distribuidora de jabones</p>
-    <!-- Botón hamburguesa (se muestra en pantallas pequeñas) -->
+    <div class="header-content">
+      <h1>EcoWord Soap</h1>
+      <p>Productora y distribuidora de jabones</p>
+    </div>
+
+    <!-- Botón hamburguesa (solo en móvil) -->
     <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú">☰</button>
   </header>
 
   <nav id="site-nav" aria-label="Menú principal">
-    <div class="container nav-inner">
-      <div class="nav-left">
-        <ul class="menu-left">
-          <li><a href="#mision">Misión</a></li>
-          <li><a href="#vision">Visión</a></li>
-          <li><a href="#valores">Valores</a></li>
-          <li><a href="#producto">Producto</a></li>
-          <li><a href="#economia">Economía Circular</a></li>
-        </ul>
-      </div>
+    <div class="nav-inner">
 
-      <div class="nav-right">
-        <ul class="menu-right">
-          <li><a href="#organigrama">Organigrama</a></li>
-          <li><a href="#pregunta">Pregunta de investigación</a></li>
+      <!-- Menú Izquierdo -->
+      <ul class="menu-left">
+        <li class="has-submenu">
+          <a href="#">Nosotros</a>
+          <ul class="submenu">
+            <li><a href="#mision">Misión</a></li>
+            <li><a href="#vision">Visión</a></li>
+            <li><a href="#valores">Valores</a></li>
+            <li><a href="#producto">Producto</a></li>
+            <li><a href="#economia">Economía Circular</a></li>
+          </ul>
+        </li>
+      </ul>
 
-          <!-- Objetivos como submenu accesible -->
-          <li class="has-submenu">
-            <button class="submenu-toggle" aria-expanded="false" aria-controls="submenu-objetivos">Objetivos ▾</button>
-            <ul id="submenu-objetivos" class="submenu" aria-hidden="true">
-              <li><a href="#ObjetivoGeneral">Objetivo General</a></li>
-              <li><a href="#ObjetivosEspecificos">Objetivos Especificos</a></li>
-            </ul>
-          </li>
+      <!-- Menú Derecho -->
+      <ul class="menu-right">
+        <li><a href="#organigrama">Organigrama</a></li>
+        <li><a href="#pregunta">Pregunta de investigación</a></li>
+        <li class="has-submenu">
+          <a href="#">Objetivos</a>
+          <ul class="submenu">
+            <li><a href="#ObjetivoGeneral">Objetivo General</a></li>
+            <li><a href="#ObjetivosEspecificos">Objetivos Específicos</a></li>
+          </ul>
+        </li>
+        <li><a href="#factor_economico">Factores de Localización</a></li>
+        <li><a href="#estetica">Estética</a></li>
+      </ul>
 
-          <li><a href="#factor_economico">Factores de Localización</a></li>
-          <li><a href="#estetica">Estética</a></li>
-        </ul>
-      </div>
     </div>
   </nav>
 
   <main>
-
     <section id="mision" class="card">
       <h2>Misión</h2>
       <p>Crear jabones naturales que cuiden tu piel y el planeta, utilizando ingredientes sostenibles y procesos
@@ -64,47 +67,42 @@
       <h2>Visión</h2>
       <p>Ser una marca líder en productos ecológicos que inspire hábitos de consumo responsables y conscientes.</p>
     </section>
-    <section id="Pregunta" class="card">
+
+    <section id="pregunta" class="card">
       <h2>Pregunta de investigación</h2>
-      <p>¿De qué manera el jabón Rey contribuye a la limpieza del hogar y al cuidado del medio ambiente?.</p>
+      <p>¿De qué manera el jabón Rey contribuye a la limpieza del hogar y al cuidado del medio ambiente?</p>
     </section>
 
     <section id="ObjetivoGeneral" class="card">
       <h2>Objetivo General</h2>
       <p>Analizar las propiedades, usos y beneficios del jabón Rey en la limpieza y el cuidado ambiental.</p>
     </section>
+
     <section id="ObjetivosEspecificos" class="card">
-      <h2>Objetivos Especificos</h2>
+      <h2>Objetivos Específicos</h2>
       <ol>
-        <li> Identificar los ingredientes principales del jabón Rey.</li> <br>
-        <li> Describir los usos más comunes del jabón Rey en el hogar.</li> <br>
-        <li> Evaluar los beneficios ecológicos del jabón Rey frente a otros jabones industriales.</li>
-      </ol>
-    </section>
-    <section id="Actividades" class="card">
-      <h2>Actividades</h2>
-      <ol>
-        <li>Investigar la historia y origen del jabón Rey.</li> <br>
-        <li>Leer la etiqueta del producto para conocer sus componentes.</li> <br>
-        <li>Observar su efecto al lavar ropa o utensilios.</li><br>
-        <li>Comparar su rendimiento con otros jabones.</li><br>
-        <li>Elaborar una conclusión sobre su importancia en el hogar y el medio ambiente.</li><br>
+        <li>Identificar los ingredientes principales del jabón Rey.</li><br>
+        <li>Describir los usos más comunes del jabón Rey en el hogar.</li><br>
+        <li>Evaluar los beneficios ecológicos del jabón Rey frente a otros jabones industriales.</li>
       </ol>
     </section>
 
     <section id="valores" class="card">
       <h2>Valores</h2>
-      <ol>  
-        <li>Sostenibilidad</li> <br>
-        <li>Calidad artesanal</li> <br>
-        <li>Transparencia</li> <br> 
+      <ol>
+        <li>Sostenibilidad</li><br>
+        <li>Calidad artesanal</li><br>
+        <li>Transparencia</li><br>
         <li>Respeto por la naturaleza</li>
       </ol>
     </section>
 
     <section id="organigrama" class="card">
       <h2>Organigrama</h2>
-      <img src="img/organigrama.png" alt="Organigrama de la empresa" class="oranigrama-img">
+      <div class="organigrams">
+        <img src="img/organigrama.png" alt="Organigrama de la empresa" class="organigrama-img">
+      </div>
+
     </section>
 
     <section id="producto" class="card">
@@ -121,7 +119,7 @@
       <p>Reutilizamos y reciclamos materiales, fomentando un modelo de producción sostenible y de bajo impacto
         ambiental.</p>
       <div class="imagenes-economia">
-        <img src="img/economia.png" alt="Economia">
+        <img src="img/economia.png" alt="Economía Circular">
       </div>
     </section>
 
@@ -129,11 +127,9 @@
       <h2>Factores de Localización</h2>
       <p>Los factores de localización determinan el éxito o fracaso de una operación: desde la cercanía a las materias
         primas y la disponibilidad de mano de obra calificada, hasta el acceso a vías de transporte, servicios públicos
-        y mercados. Un buen análisis de estos aspectos permite reducir costos, mejorar la logística y aprovechar
-        oportunidades del entorno. En pocas palabras, localizar bien una empresa es asegurar su crecimiento sostenible y
-        su conexión eficiente con clientes, proveedores y recursos.</p>
-      <div class="imagenes-economia">
-        <img src="img/localizacion.png" alt="Economia">
+        y mercados.</p>
+      <div class="imagenes-factor">
+        <img src="img/localizacion.png" alt="Factores Económicos">
       </div>
     </section>
 
@@ -147,84 +143,22 @@
         <div class="color" style="background-color: #3A5A40;">Tierra</div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    <p>© 2025 Nombre de la Empresa | Jabones Naturales | Todos los derechos reservados</p>
+    <p>© 2025 EcoWord Soap | Jabones Naturales | Todos los derechos reservados</p>
   </footer>
 
   <script>
-    // Toggle menú hamburguesa: mantener pequeño y accesible
-    (function () {
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.getElementById('site-nav');
-
-      if (!btn || !nav) return;
-
-      btn.addEventListener('click', function () {
-        const isOpen = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(isOpen));
-        // Cambiar label para lectores de pantalla
-        btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    // Botón del menú en móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#site-nav');
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
       });
-
-      // Cerrar nav si se cambia el tamaño a mayor a 800px
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 800 && nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-label', 'Abrir menú');
-        }
-      });
-
-      // Submenus: toggle y accesibilidad
-      const submenuToggles = document.querySelectorAll('.submenu-toggle');
-      for (const toggle of submenuToggles) {
-        const parent = toggle.closest('.has-submenu');
-        const submenuId = toggle.getAttribute('aria-controls');
-        const submenu = submenuId ? document.getElementById(submenuId) : null;
-
-        toggle.addEventListener('click', function (e) {
-          e.preventDefault();
-          const isOpen = parent.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', String(isOpen));
-          if (submenu) submenu.setAttribute('aria-hidden', String(!isOpen));
-        });
-      }
-
-      // Cerrar submenus al hacer click fuera
-      document.addEventListener('click', function (e) {
-        for (const toggle of submenuToggles) {
-          const parent = toggle.closest('.has-submenu');
-          if (!parent) continue;
-          if (!parent.contains(e.target)) {
-            parent.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-            const submenuId = toggle.getAttribute('aria-controls');
-            const submenu = submenuId ? document.getElementById(submenuId) : null;
-            if (submenu) submenu.setAttribute('aria-hidden', 'true');
-          }
-        }
-      });
-
-      // Cerrar submenus con Escape
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          for (const toggle of submenuToggles) {
-            const parent = toggle.closest('.has-submenu');
-            if (!parent) continue;
-            parent.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-            const submenuId = toggle.getAttribute('aria-controls');
-            const submenu = submenuId ? document.getElementById(submenuId) : null;
-            if (submenu) submenu.setAttribute('aria-hidden', 'true');
-          }
-        }
-      });
-    })();
+    }
   </script>
 </body>
-
 
 </html>
