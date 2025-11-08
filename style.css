@@ -1,596 +1,391 @@
-/* ===================================================================
-   1. VARIABLES
-   =================================================================== */
-:root {
-    --verde-oliva: #6b8e23;
-    --verde-salvia: #a3b18a;
-    --beige-arena: #f5f5f5;
-    --gris-texto: #333333;
-    --blanco: #ffffff;
-    --amarillo-acento: #ffd369;
-    --radius-lg: 16px;
-    --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05);
-    --container-max: 1100px;
-}
-
-/* ===================================================================
-   2. BASE & RESET
-   =================================================================== */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+/* === RESET GENERAL === */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
+    width: 100%;
+    height: 100vh;
 }
 
 body {
-    font-family: "Poppins", "Lato", sans-serif;
-    background-color: var(--beige-arena);
-    color: var(--gris-texto);
     line-height: 1.6;
+    background-color: #f8f9f6;
+    color: #333;
+    overflow: auto;
 }
 
-/* ===================================================================
-   3. TYPOGRAPHY
-   =================================================================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* --- HEADER --- */
+header {
+    background: linear-gradient(135deg, #1e5f36, #2f7a48);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    /* transition: all 0.3s ease; */
+}
+
+header.scrolled {
+    background: rgba(30, 95, 54, 0.95);
+    /* backdrop-filter: blur(6px); */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+header .logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.header-content h1 {
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
-a {
-    text-decoration: none;
-    color: var(--gris-texto);
-    font-weight: 500;
-    transition: color 0.3s ease;
+.header-content p {
+    font-size: 0.85rem;
+    opacity: 0.9;
 }
 
-a:hover {
-    cursor: pointer;
-    color: var(--verde-oliva);
-}
-
-p {
-    text-align: justify;
-}
-
-/* ===================================================================
-   4. LAYOUT & STRUCTURE
-   =================================================================== */
-
-/* ----------------------
-   Header
----------------------- */
-header {
-    background: linear-gradient(90deg, var(--verde-salvia), var(--verde-oliva));
-    color: var(--blanco);
-    padding: 1.5rem 1rem;
-    /* Adjusted padding for better spacing */
-    position: relative;
-    display: flex;
-    /* Use flexbox for alignment */
-    flex-direction: column;
-    /* Stack items vertically */
-    justify-content: center;
-    /* Center content vertically */
-    align-items: center;
-    /* Center content horizontally */
-    text-align: center;
-    /* Ensure text remains centered */
-}
-
-header .header-content {
-    /* Add a wrapper for h1 and p to control their width */
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-header h1 {
-    font-size: 2rem;
-}
-
-header p {
-    font-size: 1rem;
-    text-align: center;
-}
-
-/* ----------------------
-   Navigation
----------------------- */
+/* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
-    display: none;
-    /* Hidden by default, shown only on mobile/tablet */
-    background: var(--verde-oliva);
-    color: var(--blanco);
-    border: none;
-    padding: 0.75rem 1rem;
+    background: transparent;
+    border: 2px solid white;
     border-radius: 8px;
+    padding: 6px 10px;
+    color: white;
+    font-size: 1.4rem;
     cursor: pointer;
-    font-size: 1.2rem;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 100;
-    box-shadow: var(--shadow-soft);
-    transition: background 0.3s ease;
+    /* transition: all 0.3s ease; */
 }
 
 .menu-toggle:hover {
-    background: var(--verde-salvia);
+    background: rgba(255, 255, 255, 0.15);
 }
 
-nav#site-nav {
-    background: var(--blanco);
-    padding: 0.8rem 0;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+/* --- MENÚ --- */
+nav {
+    position: absolute;
+    top: 100%;
+    /* Position it right below the header */
+    left: 0;
     width: 100%;
-    z-index: 90;
+    background: rgba(30, 95, 54, 0.97);
+    text-align: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+    z-index: 999;
+    /* backdrop-filter: blur(6px); */
 }
 
-nav#site-nav.open {
-    display: block;
-    /* Shown when menu is open */
+nav.open {
+    max-height: 100vh;
+    /* A large value to ensure menu is fully visible */
 }
 
 .nav-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    /* Distribute space between left and right menus */
-    align-items: center;
-    padding: 0 1rem;
-    /* Add padding to the sides */
+    flex-direction: column;
+    padding: 40px 0;
 }
 
-ul {
+nav ul {
     list-style: none;
-    display: flex;
-    gap: 1.5rem;
+    padding: 0;
 }
 
-/* ----------------------
-   Sections
----------------------- */
-section {
-    max-width: var(--container-max);
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: var(--blanco);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-}
-
-section h2 {
-    color: var(--verde-oliva);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* ----------------------
-   Footer
----------------------- */
-footer {
-    background-color: var(--verde-oliva);
-    color: var(--blanco);
-    text-align: center;
-    padding: 1.5rem 1rem;
-    font-size: 0.9rem;
-}
-
-/* ===================================================================
-   5. COMPONENTS
-   =================================================================== */
-
-/* ----------------------
-   Cards
----------------------- */
-.card {
-    background: var(--blanco);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    padding: 1.25rem;
-}
-
-/* ----------------------
-   Submenús
----------------------- */
-.has-submenu {
+nav ul li {
+    padding: 12px 0;
     position: relative;
 }
 
-.has-submenu>a::after {
-    content: " ▾";
-    font-size: 0.8rem;
+nav ul li a {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: 600;
+    transition: color 0.3s;
 }
 
+nav ul li a:hover {
+    color: #c3ffb2;
+}
+
+/* --- SUBMENÚ --- */
 .submenu {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    background: linear-gradient(180deg, var(--blanco), var(--beige-arena));
     display: none;
     flex-direction: column;
-    min-width: 220px;
-    padding: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.35);
     border-radius: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    z-index: 10;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    opacity: 0;
-    transform: translateY(-8px);
-    transition: all 0.25s ease;
+    margin-top: 8px;
+    padding: 8px 0;
+    position: relative;
+    z-index: 1001;
 }
 
-.submenu li {
-    list-style: none;
-}
-
-.submenu li a {
-    padding: 0.8rem 1.2rem;
-    color: var(--gris-texto);
-    display: block;
-    font-size: 0.95rem;
-    transition: background 0.3s ease, color 0.3s ease, padding-left 0.2s;
-    border-radius: 4px;
-}
-
-.submenu li a:hover {
-    background: var(--verde-oliva);
-    color: var(--blanco);
-    cursor: pointer;
-    padding-left: 1.6rem;
-    font-weight: bold;
-}
-
-.has-submenu:hover>.submenu {
+.has-submenu:hover .submenu {
     display: flex;
-    opacity: 1;
-    transform: translateY(0);
 }
 
-/* ===================================================================
-   6. IMAGES & MEDIA
-   =================================================================== */
-img {
-    max-width: 100%;
+.submenu a {
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.submenu a:hover {
+    color: #c8ffb3;
+}
+
+/* --- CONTENIDO --- */
+main {
+    padding-top: 50px;
+}
+
+div.container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    display: flex;
     height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(109, 16, 16, 0.1);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.card h2 {
+    color: #3a5a40;
+    margin-bottom: 15px;
 }
 
-.logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 1rem;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    padding: 0.5rem;
-    background: var(--blanco);
-    border: 2px solid var(--verde-salvia);
+.card p,
+.card li {
+    font-size: 1rem;
+    color: #444;
+
 }
 
+/* === IMÁGENES === */
 .imagenes-producto,
 .imagenes-economia,
-.imagenes-factor,
-.organigrams {
+.imagenes-factor {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
     justify-content: center;
-    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .imagenes-producto img,
 .imagenes-economia img,
 .imagenes-factor img,
 .organigrama-img {
-    flex: 1 1 300px;
-    max-width: 450px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    padding: 0.75rem;
-    background: var(--blanco);
-    border: 2px solid var(--verde-salvia);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    transition: transform 0.3s;
 }
 
 .imagenes-producto img:hover,
 .imagenes-economia img:hover,
-.imagenes-factor img:hover,
-.organigrama-img:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+.imagenes-factor img:hover {
+    transform: scale(1.05);
 }
 
-/* ===================================================================
-   7. MEDIA QUERIES (Responsive Design)
-   =================================================================== */
-
-/* ----------------------
-   Móviles (hasta 480)
-   ---------------------- */
-@media (max-width: 320px) and (max-width: 480px) {
-    .menu-toggle {
-        display: inline-block;
-    }
-
-    #site-nav {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding-top: 6rem;
-        /* To account for the menu-toggle button */
-        background: var(--blanco);
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-    }
-
-    #site-nav.open {
-        display: block;
-    }
-
-    .nav-inner {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0;
-    }
-
-    ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
-    /* Submenu behavior on mobile: relies on hover, which is not ideal for touch devices.
-       Consider adding JavaScript to toggle a class for better touch interaction. */
-    .submenu {
-        position: static;
-        display: none;
-        opacity: 1;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-    }
-
-    .has-submenu:hover>.submenu {
-        display: block;
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    header p {
-        font-size: 0.9rem;
-    }
-
-    header .header-content {
-        padding: 0 0.5rem;
-
-    }
-
-    .imagenes-economia,
-    .imagenes-producto,
-    .imagenes-factor,
-    .organigrams {
-        width: 100%;
-        gap: 8px;
-    }
-
-    .imagenes-economia img,
-    .imagenes-producto img,
-    .imagenes-factor img,
-    .organigrama-img {
-        flex-basis: 100%;
-        margin: 0 auto;
-    }
-
-    section {
-        margin: 1.5rem 1rem;
-        padding: 1rem;
-    }
-
-    .card {
-        padding: 1rem;
-    }
+/* === ORGANIGRAMA === */
+.organigrams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ===================================================================
-   7. MEDIA QUERIES (Responsive Design)
-   =================================================================== */
+/* === COLORES Y ESTÉTICA === */
+.colores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-/* ----------------------
-   Mobile First (up to 1024px)
-   ---------------------- */
-@media (max-width: 1024px) and (max-width: 1024px) {
+.color {
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.color:nth-child(3) {
+    color: #333;
+}
+
+/* === FOOTER === */
+footer {
+    background-color: #3a5a40;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+/* === SCROLL PERSONALIZADO === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #588157;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #dad7cd;
+}
+
+/* === MEDIA QUERIES PARA RESPONSIVE === */
+@media (min-width: 769px) {
+
     .menu-toggle {
-        display: inline-block;
+        display: none;
+        /* Ocultar el botón de hamburguesa en escritorio */
     }
 
-    #site-nav {
-        position: fixed;
-        /* Use fixed position for full-screen overlay */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding-top: 6rem;
-        background: rgba(255, 255, 255, 0.95);
-        /* Semi-transparent background */
-        backdrop-filter: blur(10px);
-        /* Frosted glass effect */
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-        z-index: 999;
-        /* Ensure it's below the menu button but above other content */
-        overflow-y: auto;
-        /* Allow scrolling if content overflows */
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+    /* Ajustes del header para alinear la navegación */
+    header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
+        padding: 12px 40px;
     }
 
-    #site-nav.open {
-        transform: translateX(0);
+    /* Estilos para la barra de navegación en escritorio */
+    nav {
+        position: relative;
+        /* Cambiar a posición relativa */
+        top: auto;
+        left: auto;
+        width: auto;
+        transform: none;
+        /* Eliminar transformación */
+        background: transparent;
+        /* Sin fondo */
+        backdrop-filter: none;
+        /* Sin filtro */
+        transition: none;
+        /* Sin transición */
+        z-index: 1000;
+        max-height: none;
+        overflow: visible;
+    }
+
+    nav.open {
+        transform: none;
+        /* Mantener sin transformación al abrir */
     }
 
     .nav-inner {
-        flex-direction: column;
-        gap: 2rem;
-        /* Increased gap for better spacing */
+        flex-direction: row;
+        /* Menú horizontal */
         padding: 0;
-        text-align: center;
+        gap: 2rem;
+        /* Espacio entre los dos grupos de menú */
     }
 
-    ul {
-        flex-direction: column;
-        align-items: center;
+    nav ul {
+        display: flex;
+        flex-direction: row;
         gap: 1.5rem;
-        /* Increased gap */
+        /* Espacio entre elementos del menú */
     }
+
+    nav ul li {
+        padding: 0;
+        position: relative;
+        /* Necesario para el posicionamiento del submenú */
+    }
+
+    nav ul li a:hover {
+        color: #c3ffb2;
+    }
+
+    /* Estilos para el submenú en escritorio */
 
     .submenu {
-        position: static;
+
         display: none;
-        opacity: 1;
-        transform: none;
-        box-shadow: none;
-        padding: 0.5rem 0 0 0;
-        background: transparent;
-        border: none;
+        /* Oculto por defecto */
+
+        position: absolute;
+        /* Posicionamiento absoluto */
+
+        top: 100%;
+
+        left: 0;
+
+        background: #1e5f36;
+        /* Fondo oscuro */
+
+        border-radius: 8px;
+
+        margin-top: 0;
+        /* Eliminar el margen que causa el problema de hover */
+
+        padding: 18px 0 8px;
+        /* Añadir padding superior para mantener el espacio visual */
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+        min-width: 200px;
+        /* Ancho mínimo del submenú */
+
+        z-index: 1100;
+
     }
 
-    .has-submenu:hover>.submenu,
-    .has-submenu.open>.submenu {
-        /* Also toggle on class for touch */
-        display: block;
+    .has-submenu:hover .submenu {
+        display: flex;
+        /* Mostrar al hacer hover */
+        flex-direction: column;
     }
 
-    .has-submenu>a::after {
-        display: inline-block;
-        margin-left: 0.5rem;
-        transition: transform 0.3s ease;
+    .submenu a {
+        padding: 10px 20px;
+        font-size: 0.95rem;
     }
 
-    .has-submenu.open>a::after {
-        transform: rotate(180deg);
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    header p {
-        font-size: 0.9rem;
-    }
-
-    .imagenes-economia,
-    .imagenes-producto,
-    .imagenes-factor,
-    .organigrams {
-        gap: 1rem;
-    }
-
-    .imagenes-economia img,
-    .imagenes-producto img,
-    .imagenes-factor img,
-    .organigrama-img {
-        flex-basis: 100%;
-        margin: 0 auto;
-    }
-
-    section {
-        margin: 1.5rem 1rem;
-        padding: 1.5rem;
-    }
-}
-
-/* ----------------------
-   Tablets (specific adjustments if needed)
-   ---------------------- */
-@media (min-width: 320px) and (max-width: 1024px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1.1rem;
-    }
-
-    .imagenes-economia img,
-    .imagenes-producto img,
-    .imagenes-factor img,
-    .organigrama-img {
-        flex-basis: 45%;
-        max-width: 100%;
-    }
-}
-
-/* ----------------------
-   Desktop (>1024px)
-   ---------------------- */
-@media (min-width: 1025px) {
-    .menu-toggle {
-        display: none;
-    }
-
-    nav#site-nav {
-        display: block;
-        position: static;
-        padding-top: 0;
-        box-shadow: none;
-        background: none;
-    }
-
-    .nav-inner {
-        flex-direction: row;
-        gap: 3rem;
-    }
-
-    ul {
-        flex-direction: row;
-        gap: 1.5rem;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-    }
-
-    header p {
-        font-size: 1.2rem;
-    }
-
-    .imagenes-economia img,
-    .imagenes-producto img,
-    .imagenes-factor img,
-    .organigrama-img {
-        flex-basis: 200px;
-    }
-
-    section {
-        margin: 3rem auto;
-        padding: 2rem;
+    .submenu a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #c8ffb3;
     }
 }

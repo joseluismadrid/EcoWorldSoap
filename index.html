@@ -5,160 +5,148 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoWord Soap</title>
-  <link rel="icon" href="img/favicon.ico" type="image/ico+xml">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
-    <img src="img/Logo.png" alt="Logo de la empresa" class="logo">
-    <div class="header-content">
-      <h1>EcoWord Soap</h1>
-      <p>Productora y distribuidora de jabones</p>
+    <div class="header-container">
+      <img src="img/Logo.png" alt="Logo de la empresa" class="logo">
+      <div class="header-content">
+        <h1>EcoWord Soap</h1>
+        <p>Productora y distribuidora de jabones</p>
+      </div>
     </div>
+    <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">☰</button>
+    <nav id="site-nav" class="closed">
+      <div class="nav-inner">
+        <ul class="menu-left">
+          <li class="has-submenu">
+            <a href="#">Nosotros</a>
+            <ul class="submenu">
+              <li><a href="#mision">Misión</a></li>
+              <li><a href="#vision">Visión</a></li>
+              <li><a href="#valores">Valores</a></li>
+              <li><a href="#producto">Producto</a></li>
+              <li><a href="#economia">Economía Circular</a></li>
+            </ul>
+          </li>
+        </ul>
 
-    <!-- Botón hamburguesa (solo en móvil) -->
-    <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú">☰</button>
+        <ul class="menu-right">
+          <li><a href="#organigrama">Organigrama</a></li>
+          <li><a href="#pregunta">Pregunta de investigación</a></li>
+          <li class="has-submenu">
+            <a href="#">Objetivos</a>
+            <ul class="submenu">
+              <li><a href="#ObjetivoGeneral">Objetivo General</a></li>
+              <li><a href="#ObjetivosEspecificos">Objetivos Específicos</a></li>
+            </ul>
+          </li>
+          <li><a href="#factor_economico">Factores de Localización</a></li>
+          <li><a href="#estetica">Estética</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <nav id="site-nav" aria-label="Menú principal">
-    <div class="nav-inner">
-
-      <!-- Menú Izquierdo -->
-      <ul class="menu-left">
-        <li class="has-submenu">
-          <a href="#">Nosotros</a>
-          <ul class="submenu">
-            <li><a href="#mision">Misión</a></li>
-            <li><a href="#vision">Visión</a></li>
-            <li><a href="#valores">Valores</a></li>
-            <li><a href="#producto">Producto</a></li>
-            <li><a href="#economia">Economía Circular</a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <!-- Menú Derecho -->
-      <ul class="menu-right">
-        <li><a href="#organigrama">Organigrama</a></li>
-        <li><a href="#pregunta">Pregunta de investigación</a></li>
-        <li class="has-submenu">
-          <a href="#">Objetivos</a>
-          <ul class="submenu">
-            <li><a href="#ObjetivoGeneral">Objetivo General</a></li>
-            <li><a href="#ObjetivosEspecificos">Objetivos Específicos</a></li>
-          </ul>
-        </li>
-        <li><a href="#factor_economico">Factores de Localización</a></li>
-        <li><a href="#estetica">Estética</a></li>
-      </ul>
-
-    </div>
-  </nav>
-
   <main>
-    <section id="mision" class="card">
-      <h2>Misión</h2>
-      <p>Crear jabones naturales que cuiden tu piel y el planeta, utilizando ingredientes sostenibles y procesos
-        artesanales.</p>
-    </section>
+    <div class="container">
+      <section id="mision" class="card">
+        <h2>Misión</h2>
+        <p>Crear jabones naturales que cuiden tu piel y el planeta, utilizando ingredientes sostenibles y procesos
+          artesanales.</p>
+      </section>
 
-    <section id="vision" class="card">
-      <h2>Visión</h2>
-      <p>Ser una marca líder en productos ecológicos que inspire hábitos de consumo responsables y conscientes.</p>
-    </section>
+      <section id="vision" class="card">
+        <h2>Visión</h2>
+        <p>Ser una marca líder en productos ecológicos que inspire hábitos de consumo responsables y conscientes.</p>
+      </section>
 
-    <section id="pregunta" class="card">
-      <h2>Pregunta de investigación</h2>
-      <p>¿De qué manera el jabón Rey contribuye a la limpieza del hogar y al cuidado del medio ambiente?</p>
-    </section>
+      <section id="pregunta" class="card">
+        <h2>Pregunta de investigación</h2>
+        <p>¿De qué manera el jabón Rey contribuye a la limpieza del hogar y al cuidado del medio ambiente?</p>
+      </section>
 
-    <section id="ObjetivoGeneral" class="card">
-      <h2>Objetivo General</h2>
-      <p>Analizar las propiedades, usos y beneficios del jabón Rey en la limpieza y el cuidado ambiental.</p>
-    </section>
+      <section id="ObjetivoGeneral" class="card">
+        <h2>Objetivo General</h2>
+        <p>Analizar las propiedades, usos y beneficios del jabón Rey en la limpieza y el cuidado ambiental.</p>
+      </section>
 
-    <section id="ObjetivosEspecificos" class="card">
-      <h2>Objetivos Específicos</h2>
-      <ol>
-        <li>Identificar los ingredientes principales del jabón Rey.</li><br>
-        <li>Describir los usos más comunes del jabón Rey en el hogar.</li><br>
-        <li>Evaluar los beneficios ecológicos del jabón Rey frente a otros jabones industriales.</li>
-      </ol>
-    </section>
+      <section id="ObjetivosEspecificos" class="card">
+        <h2>Objetivos Específicos</h2>
+        <ol>
+          <li>Identificar los ingredientes principales del jabón Rey.</li><br>
+          <li>Describir los usos más comunes del jabón Rey en el hogar.</li><br>
+          <li>Evaluar los beneficios ecológicos del jabón Rey frente a otros jabones industriales.</li>
+        </ol>
+      </section>
 
-    <section id="valores" class="card">
-      <h2>Valores</h2>
-      <ol>
-        <li>Sostenibilidad</li><br>
-        <li>Calidad artesanal</li><br>
-        <li>Transparencia</li><br>
-        <li>Respeto por la naturaleza</li>
-      </ol>
-    </section>
+      <section id="valores" class="card">
+        <h2>Valores</h2>
+        <ol>
+          <li>Sostenibilidad</li><br>
+          <li>Calidad artesanal</li><br>
+          <li>Transparencia</li><br>
+          <li>Respeto por la naturaleza</li>
+        </ol>
+      </section>
 
-    <section id="organigrama" class="card">
-      <h2>Organigrama</h2>
-      <div class="organigrams">
-        <img src="img/organigrama.png" alt="Organigrama de la empresa" class="organigrama-img">
-      </div>
+      <section id="organigrama" class="card">
+        <h2>Organigrama</h2>
+        <div class="organigrams">
+          <img src="img/organigrama.png" alt="Organigrama de la empresa" class="organigrama-img">
+        </div>
+      </section>
 
-    </section>
+      <section id="producto" class="card">
+        <h2>Resumen del Producto</h2>
+        <p>Nuestros jabones son 100% naturales, elaborados con aceites esenciales y empaques biodegradables.</p>
+        <div class="imagenes-producto">
+          <img src="img/jabon1.png" alt="Jabón Natural 1">
+          <img src="img/jabon2.png" alt="Jabón Natural 2">
+        </div>
+      </section>
 
-    <section id="producto" class="card">
-      <h2>Resumen del Producto</h2>
-      <p>Nuestros jabones son 100% naturales, elaborados con aceites esenciales y empaques biodegradables.</p>
-      <div class="imagenes-producto">
-        <img src="img/jabon1.png" alt="Jabón Natural 1">
-        <img src="img/jabon2.png" alt="Jabón Natural 2">
-      </div>
-    </section>
+      <section id="economia" class="card">
+        <h2>Economía Circular</h2>
+        <p>Reutilizamos y reciclamos materiales, fomentando un modelo de producción sostenible y de bajo impacto
+          ambiental.</p>
+        <div class="imagenes-economia">
+          <img src="img/economia.png" alt="Economía Circular">
+        </div>
+      </section>
 
-    <section id="economia" class="card">
-      <h2>Economía Circular</h2>
-      <p>Reutilizamos y reciclamos materiales, fomentando un modelo de producción sostenible y de bajo impacto
-        ambiental.</p>
-      <div class="imagenes-economia">
-        <img src="img/economia.png" alt="Economía Circular">
-      </div>
-    </section>
+      <section id="factor_economico" class="card">
+        <h2>Factores de Localización</h2>
+        <p>Los factores de localización determinan el éxito o fracaso de una operación: desde la cercanía a las materias
+          primas y la disponibilidad de mano de obra calificada, hasta el acceso a vías de transporte, servicios
+          públicos
+          y mercados.</p>
+        <div class="imagenes-factor">
+          <img src="img/localizacion.png" alt="Factores Económicos">
+        </div>
+      </section>
 
-    <section id="factor_economico" class="card">
-      <h2>Factores de Localización</h2>
-      <p>Los factores de localización determinan el éxito o fracaso de una operación: desde la cercanía a las materias
-        primas y la disponibilidad de mano de obra calificada, hasta el acceso a vías de transporte, servicios públicos
-        y mercados.</p>
-      <div class="imagenes-factor">
-        <img src="img/localizacion.png" alt="Factores Económicos">
-      </div>
-    </section>
-
-    <section id="estetica" class="card">
-      <h2>Colores y Estética</h2>
-      <p>Estos colores representan nuestra conexión con la naturaleza y la pureza de nuestros productos:</p>
-      <div class="colores">
-        <div class="color" style="background-color: #A3B18A;">Salvia</div>
-        <div class="color" style="background-color: #588157;">Oliva</div>
-        <div class="color" style="background-color: #DAD7CD;">Arena</div>
-        <div class="color" style="background-color: #3A5A40;">Tierra</div>
-      </div>
-    </section>
+      <section id="estetica" class="card">
+        <h2>Colores y Estética</h2>
+        <p>Estos colores representan nuestra conexión con la naturaleza y la pureza de nuestros productos:</p>
+        <div class="colores">
+          <div class="color" style="background-color: #A3B18A;">Salvia</div>
+          <div class="color" style="background-color: #588157;">Oliva</div>
+          <div class="color" style="background-color: #DAD7CD;">Arena</div>
+          <div class="color" style="background-color: #3A5A40;">Tierra</div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 EcoWord Soap | Jabones Naturales | Todos los derechos reservados</p>
   </footer>
 
-  <script>
-    // Botón del menú en móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const siteNav = document.querySelector('#site-nav');
-    if (menuToggle && siteNav) {
-      menuToggle.addEventListener('click', () => {
-        siteNav.classList.toggle('open');
-      });
-    }
-  </script>
+  <script src="main.js"></script>
 </body>
 
 </html>
